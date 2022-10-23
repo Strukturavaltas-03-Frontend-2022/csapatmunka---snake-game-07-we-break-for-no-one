@@ -351,16 +351,16 @@ export default class Game extends BaseGame {
   }
 
   /**
-   * Don"t let snake to go backwards
+   * Don't let the snake to go backwards OR to turn right
    */
   // eslint-disable-next-line class-methods-use-this
   notBackwards(key: number): boolean {
     const lastDirection = Directions.peek();
 
-    if ((lastDirection === keys.UP && key === keys.DOWN)
-      || (lastDirection === keys.DOWN && key === keys.UP)
-      || (lastDirection === keys.LEFT && key === keys.RIGHT)
-      || (lastDirection === keys.RIGHT && key === keys.LEFT)) {
+    if ((lastDirection === keys.UP && (key === keys.DOWN || key === keys.RIGHT))
+      || (lastDirection === keys.DOWN && (key === keys.UP || key === keys.LEFT))
+      || (lastDirection === keys.LEFT && (key === keys.RIGHT || key === keys.UP))
+      || (lastDirection === keys.RIGHT && (key === keys.LEFT || key === keys.DOWN))) {
       return false;
     }
     return true;
