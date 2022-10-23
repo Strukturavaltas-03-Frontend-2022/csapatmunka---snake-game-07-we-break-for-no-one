@@ -201,7 +201,7 @@ export default class Game extends BaseGame {
         this.growth += 1; // Snake got bigger
       }
 
-      this.updateScore(type === 'food' ? 10 : 50); // Calculate the new score
+      this.updateScore(type === 'food' ? 1 : -2); // Calculate the new score
       this.showScore(); // Update the score
     }
   }
@@ -269,6 +269,10 @@ export default class Game extends BaseGame {
 
     this.score += won;
 
+    if (this.score >= 20) {
+      this.score = 0;
+    }
+
     return this.score;
   }
 
@@ -305,6 +309,9 @@ export default class Game extends BaseGame {
 
     // Turn tail into HEAD and move it to where head is supposed to go.
     this.tail.setType('head');
+
+
+
     switch (direction) {
       case keys.RIGHT:
         this.tail.move(this.head.x + SIZE, this.head.y, keys[direction]);
