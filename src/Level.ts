@@ -25,7 +25,7 @@ export default class Level {
    * @returns {coord} - egy [x, y] koordinátával tér vissza
    */
   translate(x: number, y: number): coord {
-    return [Math.ceil(x) * SIZE, Math.ceil(y) * SIZE];
+    return [Math.floor(x) * SIZE, Math.floor(y) * SIZE];
   }
 
 
@@ -74,7 +74,7 @@ export default class Level {
      * @var {number} cols - this.garden.clientHeight és SIZE hányadosa, 
      * lefelé kerekítve 
      */
-    const cols: number = Math.ceil(this.garden.clientHeight / SIZE);
+    const cols: number = Math.floor(this.garden.clientHeight / SIZE);
 
 
     /** 
@@ -82,7 +82,7 @@ export default class Level {
      * @var {number} rows - this.garden.clientWidth és SIZE hányadosa, 
      * lefelé kerekítve 
      */
-    const rows: number = Math.ceil(this.garden.clientWidth / SIZE);
+    const rows: number = Math.floor(this.garden.clientWidth / SIZE);
 
 
     /** 
